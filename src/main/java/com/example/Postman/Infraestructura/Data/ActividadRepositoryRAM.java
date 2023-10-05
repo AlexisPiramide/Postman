@@ -1,32 +1,38 @@
 package com.example.Postman.Infraestructura.Data;
 
-import com.example.Actividad2Sergio.Dominio.Coche;
-import com.example.Actividad2Sergio.Dominio.CocheRepository;
+
+import com.example.Postman.Dominio.Oferta;
+import com.example.Postman.Dominio.OfertaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActividadRepositoryRAM implements CocheRepository {
+public class ActividadRepositoryRAM implements OfertaRepository {
 
-    public List<Coche> coches = new ArrayList<>();
+    public List<Oferta> oferta = new ArrayList<>();
 
     public ActividadRepositoryRAM() {
-        Coche ferrari = new Coche("15F1JG1", "Ferrari", "Uno caro", 5990);
-        Coche dacia = new Coche("H2KH164", "Dacia", "Sandero", 999999);
-        Coche abutarda = new Coche("420BLAZE", "Tesla", "Catorce", 42069);
+        Oferta backcend   = new Oferta("Desarrollador Back End", "Esta descripcion describe cosas descriptivas sobre la descripcion de un objeto que necesita descripcion");
+        Oferta frontend = new Oferta("Desarrollador Front End", "Esta descripcion describe cosas descriptivas sobre la descripcion de un objeto que necesita descripcion");
+        Oferta fullstack = new Oferta("Desarrollador Full Stack", "Esta descripcion describe cosas descriptivas sobre la descripcion de un objeto que necesita descripcion");
 
-        coches.add(ferrari);
-        coches.add(dacia);
-        coches.add(abutarda);
+        oferta.add(backcend);
+        oferta.add(frontend);
+        oferta.add(fullstack);
     }
 
     @Override
-    public List<Coche> getAll() {
-        return this.coches;
+    public List<Oferta> getAll() {
+        return this.oferta;
     }
 
     @Override
-    public List<Coche> getMatricula(Coche matricula) {
+    public List<Oferta> getTitulos(Oferta titulo) {
+        return null;
+    }
+
+    @Override
+    public List<Oferta> getMatricula(Coche matricula) {
         return null;
     }
 
