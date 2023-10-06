@@ -5,8 +5,9 @@
     <title>Resultados de Búsqueda</title>
 </head>
 <body>
-<h1>Oficina Empleo Pirámide</h1>
-<a href="/">Empleos</a>
+<h1>Concesionario Pirámide</h1>
+<a href="/">Titulos
+</a>
 <a href="/nuevo">Nuevo</a>
 <form action="/buscar" method="post">
     <label>
@@ -16,12 +17,11 @@
 </form>
 <p>-------------------------------------</p>
 <ul>
-    <li th:each="oferta : ${ofertasEncontradas}">
+    <li th:each="oferta : ${ofertasEncontrados}">
         <span th:text="${'Título: ' + oferta.titulo}"></span><br>
-        <span th:text="${'Descripción: ' + oferta.descripcion}"></span><br><br>
+        <span th:text="${'Descripción: ' + oferta.descripcion}"></span><br>
     </li>
 </ul>
-
 
 <a href="/">Volver a la página de inicio</a>
 </body>
