@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+</head>
+<body>
+<h1>Oficina Empleo Pirámide</h1>
+<a href="/">Empleos</a>
+<a href="/nuevo">Nuevo</a>
+<form action="/buscar" method="post">
+    <label>
+        <input name="titulo" type="text" placeholder="titulo"/>
+    </label>
+    <button>Enviar</button>
+</form>
+<p>-------------------------------------</p>
+<ul>
+    <li th:each="oferta : ${ofertasEncontradas}">
+        <span th:text="${'Título: ' + oferta.titulo}"></span><br>
+        <span th:text="${'Descripción: ' + oferta.descripcion}"></span><br><br>
+    </li>
+</ul>
+
+
+<a href="/">Volver a la página de inicio</a>
+</body>
+</html>

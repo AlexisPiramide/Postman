@@ -28,12 +28,12 @@ public class ActividadRepositoryRAM implements OfertaRepository {
 
     @Override
     public List<Oferta> getTitulos(Oferta titulo) {
-        return null;
+        List<Oferta> matchingOfertas = new ArrayList<>();
+        for (Oferta oferta : oferta) {
+            if (oferta.getTitulo().equals(titulo)) {
+                matchingOfertas.add(oferta);
+            }
+        }
+        return matchingOfertas;
     }
-
-    @Override
-    public List<Oferta> getMatricula(Coche matricula) {
-        return null;
-    }
-
 }

@@ -1,23 +1,30 @@
 package com.example.Postman.Applicacion;
 
-import com.example.Actividad2Sergio.Dominio.Coche;
-import com.example.Actividad2Sergio.Dominio.CocheRepository;
 
+import com.example.Postman.Dominio.Oferta;
+import com.example.Postman.Dominio.OfertaRepository;
+import com.example.Postman.Infraestructura.Data.ActividadRepositoryRAM;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class UseCases {
 
-    private CocheRepository cocheRepository;
+    private OfertaRepository ofertaRepository;
 
-    public UseCases(CocheRepository cocheRepository){
-        this.cocheRepository = cocheRepository;
+    public UseCases(ActividadRepositoryRAM actividadRepositoryRAM) {
+        this.ofertaRepository = new ActividadRepositoryRAM();
     }
 
-    public List<Coche> getAll(){
-        return this.cocheRepository.getAll();
+    public List<Oferta> getAll(){
+        return this.ofertaRepository.getAll();
     }
 
-    public List<Coche> getMatricula(Coche coche){
-        return this.getMatricula(coche);
+    public List<Oferta> getTitulo(Oferta oferta){
+        List<Oferta> result = new ArrayList<>();
+        result.add(oferta);
+        return result;
     }
+
 }
+

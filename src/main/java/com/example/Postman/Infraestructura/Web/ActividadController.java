@@ -1,8 +1,8 @@
 package com.example.Postman.Infraestructura.Web;
 
-import com.example.Actividad2Sergio.Applicacion.ActividadUseCases;
-import com.example.Actividad2Sergio.Dominio.Coche;
-import com.example.Actividad2Sergio.Infraestructura.Data.ActividadRepositoryRAM;
+import com.example.Postman.Applicacion.UseCases;
+import com.example.Postman.Dominio.Oferta;
+import com.example.Postman.Infraestructura.Data.ActividadRepositoryRAM;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,44 +15,44 @@ import java.util.List;
 @Controller
 public class ActividadController{
 
-    ActividadUseCases actividadUseCases;
-    List<Coche> coches;
+    UseCases useCases;
+    List<Oferta> ofertas;
 
     public ActividadController(){
-        this.actividadUseCases = new ActividadUseCases(new ActividadRepositoryRAM());
-        coches = actividadUseCases.getAll();
+        this.useCases = new UseCases(new ActividadRepositoryRAM());
+        ofertas = useCases.getAll();
     }
 
     @GetMapping("/")
     String index(Model model){
 
-        model.addAttribute("coches",coches);
+        model.addAttribute("ofertas",ofertas);
         return "index";
     }
 
     @PostMapping("/nuevo")
-    public String añadirCoche(Model model,Coche coche) {
-        coches.add(coche);
-        model.addAttribute("coches",coches);
+    public String añadirOferta(Model model,Oferta oferta) {
+        ofertas.add(oferta);
+        model.addAttribute("ofertas",ofertas);
         return "index";
     }
 
     @GetMapping("/nuevo")
-    public String mostrarFormularioNuevoCoche() {
+    public String mostrarFormularioNuevaOferta() {
         return "nuevo";
     }
 
     @PostMapping("/buscar")
-    public String buscar(@RequestParam String matricula, Model model) {
-        List<Coche> cochesEncontrados = new ArrayList<>();
+    public String buscar(@RequestParam String titulo, Model model) {
+        List<Oferta> ofertasEncontrados = new ArrayList<>();
 
-        for (Coche coche : coches) {
-            if (coche.getMatricula().equals(matricula)) {
-                cochesEncontrados.add(coche);
+        for (Oferta oferta : ofertas) {
+            if (oferta.getTitulo().equals(titulo)) {
+                ofertasEncontrados.add(oferta);
             }
         }
 
-        model.addAttribute("cochesEncontrados", cochesEncontrados);
+        model.addAttribute("ofertasEncontrados", ofertasEncontrados);
         return "buscar";
     }
 }
